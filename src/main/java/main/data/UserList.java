@@ -27,9 +27,9 @@ public class UserList {
     }
 
     public static boolean login(String email, String password) {
-        if (!StringUtils.isEmpty(email)){
+        if (!StringUtils.isEmpty(email)) {
             User current = ARRAY.get(email);
-            if (current != null){
+            if (current != null) {
                 return current.getPassword().equals(password);
             }
         }
@@ -37,22 +37,22 @@ public class UserList {
     }
 
     public static boolean uniqueUser(String email) {
-        if (!ARRAY.containsKey(email)){
+        if (!ARRAY.containsKey(email)) {
             return false;
         }
         return true;
     }
 
-    public static Long getId(String email){
-        if (!ARRAY.containsKey(email)){
+    public static Long getId(String email) {
+        if (!ARRAY.containsKey(email)) {
             return null;
         }
         return ARRAY.get(email).getId();
     }
 
-    public static User getById(Long id){
-        for (User curUser : ARRAY.values()){
-            if (curUser.getId() == id){
+    public static User getById(Long id) {
+        for (User curUser : ARRAY.values()) {
+            if (curUser.getId() == id) {
                 return curUser;
             }
         }

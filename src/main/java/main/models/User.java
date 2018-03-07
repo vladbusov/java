@@ -27,25 +27,25 @@ public class User {
 
 
 
-    public User(String email, String login, String password){
+    public User(String email, String login, String password) {
         this.id = ID_GENERATOR.getAndDecrement();
         this.email = email;
         this.password = password;
         this.login = login;
     }
 
-    public Boolean equalEmail(User user){
+    public Boolean equalEmail(User user) {
         return user.getEmail().equals(this.email);
     }
 
-    public void editUser(String newEmail, String newLogin, String newPassword){
-        if (!StringUtils.isEmpty(newEmail)){
+    public void editUser(String newEmail, String newLogin, String newPassword) {
+        if (!StringUtils.isEmpty(newEmail)) {
             setEmail(newEmail);
         }
-        if (!StringUtils.isEmpty(newPassword)){
+        if (!StringUtils.isEmpty(newPassword)) {
             setEmail(newPassword);
         }
-        if (!StringUtils.isEmpty(newLogin)){
+        if (!StringUtils.isEmpty(newLogin)) {
             setEmail(newLogin);
         }
     }

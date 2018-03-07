@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class UserService {
 
-        public static Message notFound(String request){
+        public static Message notFound(String request) {
                 ArrayList<String> arrayList = new ArrayList<String>();
                 arrayList.add("404");
                 arrayList.add("PAGE " + request + " NOT FOUND");
@@ -18,8 +18,8 @@ public class UserService {
         }
 
         @NotNull
-        public static Message registUser(User newbie){
-                if (!UserList.uniqueUser(newbie.getEmail())){
+        public static Message registUser(User newbie) {
+                if (!UserList.uniqueUser(newbie.getEmail())) {
                         return new Message<String>(false, "USER_ALREADY_EXISTS");
                 }
                 UserList.addUser(newbie);
@@ -27,8 +27,8 @@ public class UserService {
         }
 
         @NotNull
-        public static Message login(String email, String password, HttpSession session){
-                if ( UserList.login(email, password) ){
+        public static Message login(String email, String password, HttpSession session) {
+                if (UserList.login(email, password)) {
                         session.setAttribute("userId", UserList.getId(email));
                         return new Message<String>(true, "USER_SUCCESSFULLY_LOGIN");
                 }
@@ -36,10 +36,9 @@ public class UserService {
         }
 
         @NotNull
-        public static Message getUserData(HttpSession session){
+        public static Message getUserData(HttpSession session) {
                 final Long id = (Long) session.getAttribute("userId");
-                if (Validation.checkId(id) != null)
-                {
+                if (Validation.checkId(id) != null) {
                         return Validation.checkId(id);
                 }
                 User curUser = UserList.getById(id);
@@ -47,21 +46,20 @@ public class UserService {
         }
 
         @NotNull
-        public static Message editUser(User user, HttpSession session){
+        public static Message editUser(User user, HttpSession session) {
                 final Long id = (Long) session.getAttribute("userId");
-                if (Validation.checkId(id) != null){
+                if (Validation.checkId(id) != null) {
                         return Validation.checkId(id);
                 }
                 User curUser = UserList.getById(id);
-                curUser.editUser(user.getEmail(), user.getLogin(),user.getPassword());
+                curUser.editUser(user.getEmail(), user.getLogin(), user.getPassword());
                 return new Message<String>(true, "USER_SUCCESSFULLY_CHANGED");
         }
 
         @NotNull
-        public static Message loguot(HttpSession session){
+        public static Message loguot(HttpSession session) {
                 final Long id = (Long) session.getAttribute("userId");
-                if (Validation.checkId(id) != null)
-                {
+                if (Validation.checkId(id) != null) {
                         return Validation.checkId(id);
                 }
                 session.invalidate();
