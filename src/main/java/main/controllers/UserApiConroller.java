@@ -21,8 +21,13 @@ public class UserApiConroller {
     }
 
     @PostMapping(value = "/signup", produces = "application/json")
-    public Message register(@RequestBody User newbie, HttpSession session) {
+    public Message register(@RequestBody User newbie) {
         return UserService.registUser(newbie);
+    }
+
+    @GetMapping(value = "/{unknown}", produces = "application/json")
+    public Message register(@PathVariable("unknown") String unknown) {
+        return UserService.notFound(unknown);
     }
 
     @PostMapping(value = "/signin", produces = "application/json")
@@ -33,11 +38,6 @@ public class UserApiConroller {
     @PostMapping(value = "/edit", produces = "application/json")
     public Message editProfile(@RequestBody User user, HttpSession session) {
         return UserService.editUser(user, session);
-    }
-
-    @GetMapping(value = "/{unknown}", produces = "application/json")
-    public Message register(@PathVariable("unknown") String unknown, HttpSession session) {
-        return UserService.notFound(unknown);
     }
 
 }
