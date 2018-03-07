@@ -27,9 +27,9 @@ public class User {
 
 
 
-    public User(String mail, String login, String password) {
+    public User(String email, String login, String password) {
         this.id = ID_GENERATOR.getAndDecrement();
-        this.email = mail;
+        this.email = email;
         this.password = password;
         this.login = login;
     }
@@ -78,5 +78,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

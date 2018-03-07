@@ -38,14 +38,29 @@ public class UserList {
     }
     public static boolean uniqueUser(String email)
     {
-        for (String curEmail : ARRAY.keySet())
+        if (!ARRAY.containsKey(email))
         {
-            if (curEmail.equals(email))
-            {
-                return false;
-            }
+            return false;
         }
         return true;
+    }
+    public static Long getId(String email)
+    {
+        if (!ARRAY.containsKey(email))
+        {
+            return null;
+        }
+        return ARRAY.get(email).getId();
+    }
+    public static User getById(Long id)
+    {
+        for (User curUser : ARRAY.values() )
+        {
+            if (curUser.getId() == id){
+                return curUser;
+            }
+        }
+        return null;
     }
 
 }

@@ -13,11 +13,13 @@ public class Message<T> {
         this.message = message;
         this.successful = successful;
     }
+
     /*
     Без аннотации компилятор выдаст предупреждение о том,
     что локальная переменная s не используется. С аннотацией
     компилятор игнорирует это предупреждение для локального модуля
      */
+
     @SuppressWarnings("unused")
     public T getMessage() {
         return message;
